@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans 	xmlns="http://www.springframework.org/schema/beans"
+  		xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	  	xmlns:context="http://www.springframework.org/schema/context"
+  		xsi:schemaLocation="http://www.springframework.org/schema/beans
+		    http://www.springframework.org/schema/beans/spring-beans.xsd
+		    http://www.springframework.org/schema/context
+		    http://www.springframework.org/schema/context/spring-context.xsd">
+
+	<bean id="saludoService" class ="es.uniovi.service.impl.DefaultSaludoService">
+		<property name="saludo" value="${saludo:Sayonara}"/>
+	</bean>
+	
+	<bean id="main" class="es.uniovi.Main">
+		<property name="saludoService" ref="saludoService"/>		
+	</bean>
+	
+	<bean class="org.springframework.beans.factory.config.PropertyPlaceholderConfigurer">
+		<property name="location">
+		 	<value>classpath:/application.properties</value>
+		</property>
+	</bean>
+
+</beans>
